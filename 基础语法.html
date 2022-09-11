@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--希望Vue能够控制下面的这个div,帮我们在把数据填充到div内部 -->
+    <div id="app">
+
+        <!-- 内容渲染指令 开始 -->
+        <!--   插值表达式   {{}}   只能用在元素的内容节点中,不能用在元素的属性节点中! -->
+        {{age}}
+        <p v-text="username"></p>
+        <p>性别:{{ sex }}</p>
+        <p v-html="info"></p>
+        <!-- 内容渲染指令 结束 -->
+
+        <!--  vue规定v-bind:指令可以简写为: -->
+        <!-- 在vue中,可以使用v-bind:指令,  简写 :  为元素的属性动态绑定值; -->
+        <input type="text" v-bind:placeholder="tips">
+        <img :src="photo" alt="" style="width:50px">
+        <div :title=" 'box' + index ">aaaa</div>
+    </div>
+
+
+<!--1. 导入Vue的库文件,在window全局就有了vue这个构造函数-->
+<script src="vue.js"></script>
+
+    <script>
+        //创建Vue的实例对象
+        const vm = new Vue({
+        // el属性是固定的写法,表示当前vm实例要控制页面上的哪个区域,接收的值是一个选择器
+            el:'#app',
+            // data对象就是要渲染到页面上的数据
+            data:{
+                username:'张山',
+                age:'18',
+                sex:'男',
+                info:'<h1>wwww</h1>',
+                tips:'请输入用户名',
+                photo:'./images/1.jpg',
+                index:3
+            }
+
+
+        })
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

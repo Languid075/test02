@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+
+        <!--  vue规定v-bind:指令可以简写为: -->
+        <!-- 在vue中,可以使用v-bind:指令,  简写 :  为元素的属性动态绑定值; -->
+        <input type="text" v-bind:placeholder="tips">
+        <img :src="photo" alt="" style="width:50px">
+
+
+        <p>count的值是:{{ count }}</p>
+        <!--在绑定事件处理函数的时候,可以使用()传递参数-->
+        <!--   v-on:指令可以被简写为@  -->
+        <button v-on:click="add(1)">+1</button>
+        <button @click="sub">-1</button>
+    </div>
+
+
+
+<script src="vue.js"></script>
+
+    <script>
+
+        const vm = new Vue({
+
+            el:'#app',
+
+            data:{
+                count:0,
+                tips:'请输入用户名',
+                photo:'./images/1.jpg'
+            },
+            // methods的作用,就是定义事件的处理函数
+            methods: {
+                // 简写 xxx(){}
+                add(a){
+                   this.count+=a
+                },
+                // 原生 xxx function(){}
+                sub: function(){
+                    this.count-=1
+                }
+            },
+        })
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

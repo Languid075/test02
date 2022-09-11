@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+</head>
+<body>
+    
+<div id="app">
+    <form @submit.prevent="add">
+        <td>品牌名称</td>
+        <input type="text" v-model.trim="brand">
+        <button @click="">添加</button>
+    </form>
+    <br>
+    <table class="table table-bordered table-hover table-stripedi"> 
+       <thead>
+        <th>Id</th>
+        <th>品牌名称</th>
+        <th>状态</th>
+        <th>创建时间</th>
+        <th>操作</th>
+    </thead>
+
+    <tr v-for="ietm in list" :key="ietm.id">
+        <td>{{ ietm.id }}</td>
+        <td>{{ ietm.name }}</td>
+        <td>{{ ietm.zt }}</td>
+        <td>{{ ietm.time }}</td>
+        <td><a href="javascript:;" @click="remove(ietm.id)">删除</a></td>
+    </tr>
+
+    </table>
+
+
+</div>
+<script src="./lib/vue-2.6.12.js"></script>
+<script>
+
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            brand:'',
+            nextid:4,
+            list:[
+                {id:1,name:'宝马',zt:'以启用',time:new Date()},
+                {id:2,name:'宝马',zt:'以启用',time:new Date()},
+                {id:3,name:'宝马',zt:'以启用',time:new Date()}
+            ]
+        },
+        methods: {
+            remove(id){
+               this.list = this.list.filter(ietm => ietm.id !== id )
+            },
+            add(){
+                if(this.brand == '') return confirm('内容不能为空')
+                // if(this.brand == ''){
+                //     confirm('内容不能为空')
+                // }else{
+                //    return this.brand;
+                // }
+                let obj = {
+                    id:this.nextid,
+                    name:this.brand,
+                    zt:'我问问',
+                    time:new Date()
+                }
+                this.list.push(obj)
+                this.brand='';
+                this.nextid++
+            }
+        },
+        function(i){
+
+        }
+    })
+
+</script>
+</body>
+</html>

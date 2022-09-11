@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<div id="app">
+
+    <p>用户的名字是: {{ unername }} </p>
+    <input type="text" v-model="unername" style="outline:unset;">
+    <input type="text" :value="unername">
+
+    <select v-model="f">
+        <option value="1">a</option>
+        <option value="2">b</option>
+        <option value="3">c</option>
+    </select>
+    <br>
+
+    <!-- .number 自动将用户的输入值转为数值类型 -->
+    <input type="text" v-model.number="n1"> + <input type="text" v-model.number="n2"> = {{ n1 + n2 }}
+    <br>
+
+     <!-- trim  自动过滤用户输入的首尾空白字符 -->
+    <input type="text" v-model.trim="names">
+    <button @click="show">获得用户名</button>
+
+     <!-- lazy   在"change"时而非"input"时更新 -->
+     <input type="text" v-model.lazy="names">
+</div>
+<script src="vue.js"></script>
+<script>
+
+    const vm  = new Vue({
+
+        el:'#app',
+        data:{
+            names:'啊啊啊',
+            unername:'试试水',
+            f:'',
+            n1:1,
+            n2:2
+        },
+        methods: {
+            show(){
+                console.log(`用户名是："${this.names}"`);
+            }
+        },
+
+    })
+
+
+</script>
+
+</body>
+</html>

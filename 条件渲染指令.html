@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div id="app">
+
+    <!-- 1. v-show的原理是:动态为元素添加或移除display: none样式,来实现元素的显示和隐藏。
+    如果要频繁的切换元素的显示状态,用v-show性能会更好 -->
+
+    <!-- 2. v-if 的原理是:每次动态创建或移除元素,实现元素的显示和隐藏。
+    如果刚进入页面的时候,某些元索默认不需要被展示,而且后期这个元索很可能也不需要被展示出来,此时v-if性能更好 -->
+
+    <p v-if="flag">这是被v-if控制的元素</p>
+    <p v-show="flag">这是被v-show控制的元素</p>
+
+    <div v-if="type === 'A'">优秀</div>
+    <div v-else-if="type === 'B'">良好</div>
+    <div v-else-if="type === 'C'">一般</div>
+    <div v-else="type === 'D'">不及格</div>
+
+</div>
+<script src="./vue.js"></script>
+<script>
+
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            flag:true,
+            type:"A",
+        },
+        methods: {
+            
+        },
+    })
+
+</script>
+</body>
+</html>
